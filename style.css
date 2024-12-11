@@ -1,10 +1,62 @@
-*{
+* {
       margin: 0;
       padding: 0;
-      font-family: 'popins',sans-serif;
+      font-family: 'Poppins', sans-serif;
       box-sizing: border-box;
 }
-img.copy{
-      height: 100px;
-      width: 100px;
+
+body {
+      background-color: rgb(7, 62, 107);
+}
+
+.main {
+      padding-left: 400px;
+      padding-top: 50px;
+}
+
+h1 font {
+      font-size: 50px;
+      font-weight: 1500;
+      color: red;
+      display: inline-block;
+      animation: textMotion 2s infinite alternate;
+      margin-left: 0.5em;
+}
+
+@keyframes textMotion {
+      0% {
+            transform: scale(1);
+            color: red;
+      }
+      50% {
+            transform: scale(1.2);
+            color: orange;
+      }
+      100% {
+            transform: scale(1);
+            color: red;
+      }
+}
+
+.box {
+      background-color: aliceblue;
+      width: 500px;
+      height: 300px;
+      border-radius: 30px;
+      padding-top: 100px;
+      padding-left: 100px;
+}
+
+img.copy {
+      height: 35px;
+      width: 35px;
+      padding-top: 10px;
+}
+
+input#Password {
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
 }
