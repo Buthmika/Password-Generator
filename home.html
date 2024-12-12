@@ -1,17 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
-      <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-      
-            
+    <div class="main">
+        <h1>
+            <span class="animate">Generate</span> 
+            <font class="pulse">Password</font>
+        </h1>
+        <div class="outbox">
+            <div class="view">
+                <input type="text" id="pw" placeholder="Password" readonly>
+                <img src="images/icons8-copy-50.png" alt="copy" onclick="copyPassword()">
+            </div>
+        </div>
+        <div class="butt">
+            <button onclick="createPassword()">Generate</button>
+        </div>
+    </div>
+    <script>
+      const passwordBox = document.getElementById("pw");
+      const length = 12;
+      const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const lowerCase = "abcdefghijklmnopqrstuvwxyz";
+      const number = "1234567890";
+      const symbol = "!@#$%^&*()-_=+[]{};:'\",.<>?/\\|";
+      const allChars = upperCase + lowerCase + number + symbol;
 
-      
-      
-      
+      function createPassword() {
+          let password = "";
+          // Add at least one character of each type
+          password += upperCase[Math.floor(Math.random() * upperCase.length)];
+          password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+          password += number[Math.floor(Math.random() * number.length)];
+          password += symbol[Math.floor(Math.random() * symbol.length)];
+
+          // Fill the rest of the password with random characters
+          while (password.length < length) {
+              password += allChars[Math.floor(Math.random() * allChars.length)];
+          }
+
+          // Shuffle the password for better randomness
+          password = password.split('').sort(() => Math.random() - 0.5).join('');
+
+          // Display the generated password
+          passwordBox.value = password;
+      }
+
+      function copyPassword() {
+          if (passwordBox.value !== "") {
+              passwordBox.select();
+              document.execCommand("copy");
+              alert("Password copied to clipboard!");
+          } else {
+              alert("Please generate a password first!");
+          }
+      }
+    </script>
 </body>
 </html>
